@@ -28,7 +28,6 @@ friend(n1 = "Olivia").then((text) => {
 
 async function number(a) {
     return (a * a);
-
 }
 number(a = 90).then((sum) => {
     console.log(sum);
