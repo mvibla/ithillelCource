@@ -93,8 +93,6 @@ test.describe('login suite', async () => {
         await expect(landingPage.getusernames).toHaveText(/performance_glitch_user/);
         await expect(landingPage.getusernames).toHaveText(/error_user/);
         await expect(landingPage.getusernames).toHaveText(/visual_user/);
-
-
     });
 
     test('Add to cart Sauce Labs Backpack', async ({ page }) => {
@@ -108,6 +106,5 @@ test.describe('login suite', async () => {
         await expect(landingPage.getremovebtn).toBeVisible();   
         await landingPage.getremovebtn.click(); 
         await expect(landingPage.addtocartbackpack).toBeVisible();  
-    });
-    
+    });    
 })

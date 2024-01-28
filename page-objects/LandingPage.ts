@@ -32,9 +32,6 @@ export class LandingPage{
         this.getusernames = page.locator('#login_credentials');
         this.addtocartbackpack = page.getByText('$29.99Add to cart');
         this.getremovebtn = page.locator('[data-test="remove-sauce-labs-backpack"]');
-
-
-
       }
 
     async goto() {
@@ -46,4 +43,4 @@ export class LandingPage{
         await this.getpassfield.fill("");
         await this.loginclick.click();
     }
-}
+  }
