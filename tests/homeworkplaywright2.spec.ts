@@ -75,14 +75,14 @@ test.describe('login suite', async () => {
         await expect(landingPage.getproductsortcontainer).toHaveText("Name (A to Z)Name (Z to A)Price (low to high)Price (high to low)");
     });
 
-    test('passwords for all users', async ({ page }) => {
+    test('new1 passwords for all users', async ({ page }) => {
         const landingPage = new LandingPage(page);
         await landingPage.goto();
 
         await expect(landingPage.getpasswordtext).toHaveText(/Password for all users:secret_sauce/);
     });
 
-    test('Accepted usernames', async ({ page }) => {
+    test('new2 Accepted usernames', async ({ page }) => {
         const landingPage = new LandingPage(page);
         await landingPage.goto();
 
@@ -95,7 +95,7 @@ test.describe('login suite', async () => {
         await expect(landingPage.getusernames).toHaveText(/visual_user/);
     });
 
-    test('Add to cart Sauce Labs Backpack', async ({ page }) => {
+    test('new3 Add to cart Sauce Labs Backpack', async ({ page }) => {
         const landingPage = new LandingPage(page);
         await landingPage.goto();
         await landingPage.getloginfield.fill("standard_user");
