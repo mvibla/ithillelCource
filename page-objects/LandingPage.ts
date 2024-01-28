@@ -12,6 +12,10 @@ export class LandingPage{
     readonly getlogincredentials: Locator;
     readonly getproductsortcontainer: Locator;
     readonly getinventoryitem: Locator;
+    readonly getpasswordtext: Locator;
+    readonly getusernames: Locator;
+    readonly addtocartbackpack: Locator;
+    readonly getremovebtn: Locator;
 
     constructor(page: Page) {
         this.page = page;
@@ -24,6 +28,10 @@ export class LandingPage{
         this.getlogincredentials = page.locator('#login_password');
         this.getproductsortcontainer = page.locator('[data-test="product_sort_container"]');
         this.getinventoryitem = page.locator('#inventory_item_label');
+        this.getpasswordtext = page.getByText('Password for all users:secret_sauce');
+        this.getusernames = page.locator('#login_credentials');
+        this.addtocartbackpack = page.getByText('$29.99Add to cart');
+        this.getremovebtn = page.locator('[data-test="remove-sauce-labs-backpack"]');
       }
 
     async goto() {
@@ -35,4 +43,4 @@ export class LandingPage{
         await this.getpassfield.fill("");
         await this.loginclick.click();
     }
-}
+  }

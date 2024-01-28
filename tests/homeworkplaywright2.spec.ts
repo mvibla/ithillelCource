@@ -74,5 +74,37 @@ test.describe('login suite', async () => {
         await expect(landingPage.getproductsortcontainer).toBeEditable();
         await expect(landingPage.getproductsortcontainer).toHaveText("Name (A to Z)Name (Z to A)Price (low to high)Price (high to low)");
     });
-    
+
+    test('passwords for all users', async ({ page }) => {
+        const landingPage = new LandingPage(page);
+        await landingPage.goto();
+
+        await expect(landingPage.getpasswordtext).toHaveText(/Password for all users:secret_sauce/);
+    });
+
+    test('Accepted usernames', async ({ page }) => {
+        const landingPage = new LandingPage(page);
+        await landingPage.goto();
+
+        await expect(landingPage.getusernames).toHaveText(/Accepted usernames are:/);
+        await expect(landingPage.getusernames).toHaveText(/standard_user/);
+        await expect(landingPage.getusernames).toHaveText(/locked_out_user/);
+        await expect(landingPage.getusernames).toHaveText(/problem_user/);
+        await expect(landingPage.getusernames).toHaveText(/performance_glitch_user/);
+        await expect(landingPage.getusernames).toHaveText(/error_user/);
+        await expect(landingPage.getusernames).toHaveText(/visual_user/);
+    });
+
+    test('Add to cart Sauce Labs Backpack', async ({ page }) => {
+        const landingPage = new LandingPage(page);
+        await landingPage.goto();
+        await landingPage.getloginfield.fill("standard_user");
+        await landingPage.getpassfield.fill("secret_sauce");
+        await landingPage.loginclick.click();
+        await landingPage.addtocartbackpack.click();
+        
+        await expect(landingPage.getremovebtn).toBeVisible();   
+        await landingPage.getremovebtn.click(); 
+        await expect(landingPage.addtocartbackpack).toBeVisible();  
+    });    
 })
